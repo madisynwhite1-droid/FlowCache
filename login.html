@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - FlowCache</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="vault-topbar">
+    <div class="brand-wrap">
+      <div class="brand-inline">
+        <img src="logo.png" alt="FlowCache logo" class="brand-logo" />
+        <div>
+          <h1 class="vault-logo">FlowCache</h1>
+          <p class="vault-sublogo">Private Tool Vault • Curated for modern work</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-wrapper">
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+
+      <div class="menu-dropdown" id="menuDropdown">
+        <a href="index.html">Home</a>
+        <a href="vault.html#newThisWeek">New This Week</a>
+        <a href="vault.html#vaultTools">Vault Tools</a>
+        <a href="vault.html#memberships">Memberships</a>
+        <a href="newsletter.html">Newsletter</a>
+        <a href="login.html">Login</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="luxury-login-shell">
+    <div class="luxury-login-glow glow-one"></div>
+    <div class="luxury-login-glow glow-two"></div>
+
+    <div class="luxury-login-wrap">
+      <div class="luxury-login-intro">
+        <p class="login-kicker">PRIVATE ACCESS</p>
+        <h2>Enter the Cache Vault</h2>
+        <p class="login-lead">
+          Log in with your email to access your FlowCache account, premium vault access,
+          and curated weekly discoveries.
+        </p>
+
+        <div class="login-mini-points">
+          <div class="login-mini-card">
+            <span>🔐</span>
+            <p>Secure magic link login</p>
+          </div>
+          <div class="login-mini-card">
+            <span>✨</span>
+            <p>Premium access sync</p>
+          </div>
+          <div class="login-mini-card">
+            <span>📬</span>
+            <p>Weekly drop connection</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="luxury-login-card">
+        <p class="login-label">FlowCache Account</p>
+        <h3>Welcome back</h3>
+        <p class="login-text">
+          Enter your email address and we’ll send you a secure magic link.
+        </p>
+
+        <div class="luxury-input-wrap">
+          <label for="email" class="luxury-label">Email address</label>
+          <input type="email" id="email" placeholder="Enter your email address" />
+        </div>
+
+        <div class="login-actions">
+          <button id="sendMagicLinkBtn">Send Magic Link</button>
+          <button id="logoutBtn" type="button" class="ghost-login-btn">Log Out</button>
+        </div>
+
+        <div id="loginStateCard" class="login-state-card hidden">
+          <div class="login-state-icon" id="loginStateIcon">✉️</div>
+          <div class="login-state-text">
+            <p class="login-state-label" id="loginStateLabel">Check your inbox</p>
+            <p class="login-state-message" id="loginMessage">
+              Your secure magic link is on the way.
+            </p>
+          </div>
+        </div>
+
+        <div class="login-divider"></div>
+
+        <div class="login-bottom-links">
+          <a href="index.html" class="back-link">← Back to homepage</a>
+          <a href="newsletter.html" class="back-link subtle-link">View Newsletter</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script type="module">
+    import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+
+    const SUPABASE_URL = "https://blnhgnopztuyivhidxdm.supabase.co";
+    const SUPABASE_ANON_KEY = "sb_publishable_ZRPc6SFLDtFt2oNw4EoSfA_niGHoHHi";
+
+    const loginMessage = document.getElementById("loginMessage");
+    const emailInput = document.getElementById("email");
+    const sendMagicLinkBtn = document.getElementById("sendMagicLinkBtn");
+    const logoutBtn = document.getElementById("logoutBtn");
+
+    const menuToggle = document.getElementById("menuToggle");
+    const menuDropdown = document.getElementById("menuDropdown");
+
+    const supabaseConfigured =
+      !SUPABASE_URL.startsWith("YOUR_") && !SUPABASE_ANON_KEY.startsWith("YOUR_");
+
+    const supabase = supabaseConfigured
+      ? createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+      : null;
+
+    const loginStateCard = document.getElementById("loginStateCard");
+    const loginStateIcon = document.getElementById("loginStateIcon");
+    const loginStateLabel = document.getElementById("loginStateLabel");
+
+    function setMessage(text, isError = false, label = "") {
+      if (!loginStateCard || !loginMessage || !loginStateIcon || !loginStateLabel) return;
+
+      loginStateCard.classList.remove("hidden", "success", "error", "info");
+
+      if (isError) {
+        loginStateCard.classList.add("error");
+        loginStateIcon.textContent = "⚠️";
+        loginStateLabel.textContent = label || "Something needs attention";
+      } else {
+        loginStateCard.classList.add("success");
+        loginStateIcon.textContent = "✉️";
+        loginStateLabel.textContent = label || "Check your inbox";
+      }
+
+      loginMessage.textContent = text;
+    }
+
+    function saveLocalUser(profile = {}, email = "") {
+      const existingUser = JSON.parse(localStorage.getItem("flowcache_user")) || {};
+
+      localStorage.setItem("flowcache_user", JSON.stringify({
+        ...existingUser,
+        email: email || profile.email || existingUser.email || "",
+        hasAccess: Boolean(profile.vault_access || existingUser.hasAccess),
+        isOwner: Boolean(profile.is_owner || existingUser.isOwner),
+        plan: profile.plan || existingUser.plan || "free",
+        subscriptionStatus: profile.subscription_status || existingUser.subscriptionStatus || "inactive"
+      }));
+    }
+
+    async function syncUserProfileAndRedirect() {
+      if (!supabase) return false;
+
+      const { data: sessionData } = await supabase.auth.getSession();
+      const session = sessionData?.session;
+
+      if (!session?.user) return false;
+
+      const email = session.user.email?.toLowerCase() || "";
+
+      const { data: profile, error } = await supabase
+        .from("profiles")
+        .select("email, vault_access, is_owner, plan, subscription_status")
+        .eq("id", session.user.id)
+        .single();
+
+      if (!error && profile) {
+        saveLocalUser(profile, email);
+      } else {
+        saveLocalUser({}, email);
+      }
+
+      window.location.href = "vault.html";
+      return true;
+    }
+
+    sendMagicLinkBtn.addEventListener("click", async () => {
+      const email = emailInput.value.trim().toLowerCase();
+
+      if (!email) {
+        setMessage("Please enter your email address to continue.", true, "Email required");
+        return;
+      }
+
+      if (!supabase) {
+        localStorage.setItem("flowcache_user", JSON.stringify({
+          email,
+          hasAccess: false,
+          isOwner: false,
+          plan: "free",
+          subscriptionStatus: "inactive"
+        }));
+
+        setMessage(
+          "Supabase is not connected yet, so a local free account was created for testing.",
+          false,
+          "Testing mode"
+        );
+
+        setTimeout(() => {
+          window.location.href = "vault.html";
+        }, 900);
+
+        return;
+      }
+
+      sendMagicLinkBtn.disabled = true;
+      setMessage("We’re sending your secure magic link now.", false, "Sending access");
+      loginStateCard.classList.remove("success");
+      loginStateCard.classList.add("info");
+      loginStateIcon.textContent = "⏳";
+
+      const { error } = await supabase.auth.signInWithOtp({
+        email,
+        options: {
+          emailRedirectTo: `${window.location.origin}/vault.html`
+        }
+      });
+
+      sendMagicLinkBtn.disabled = false;
+
+      if (error) {
+        setMessage(error.message || "Unable to send magic link.", true, "Login issue");
+        return;
+      }
+
+      setMessage(
+        "Magic link sent. Check your email and open the link to enter FlowCache.",
+        false,
+        "Check your inbox"
+      );
+    });
+
+    logoutBtn.addEventListener("click", async () => {
+      localStorage.removeItem("flowcache_user");
+
+      if (supabase) {
+        await supabase.auth.signOut();
+      }
+
+      setMessage("You have been logged out successfully.", false, "Signed out");
+
+      setTimeout(() => {
+        window.location.href = "index.html";
+      }, 700);
+    });
+
+    if (supabaseConfigured) {
+      syncUserProfileAndRedirect();
+    }
+
+    if (menuToggle && menuDropdown) {
+      menuToggle.addEventListener("click", (e) => {
+        e.stopPropagation();
+        menuDropdown.classList.toggle("show");
+      });
+
+      document.addEventListener("click", (e) => {
+        const clickedInsideMenu = menuDropdown.contains(e.target);
+        const clickedButton = menuToggle.contains(e.target);
+
+        if (!clickedInsideMenu && !clickedButton) {
+          menuDropdown.classList.remove("show");
+        }
+      });
+
+      const dropdownLinks = menuDropdown.querySelectorAll("a");
+      dropdownLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          menuDropdown.classList.remove("show");
+        });
+      });
+    }
+  </script>
+</body>
+</html>

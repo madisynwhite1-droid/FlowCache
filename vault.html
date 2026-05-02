@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>FlowCache Vault</title>
+	<link rel="stylesheet" href="style.css" />
+</head>
+<body class="vault-page">
+
+	<!-- TOP NAV -->
+	<header class="vault-topbar">
+		<div class="brand-wrap">
+			<div class="brand-inline">
+				<img src="logo.png" alt="FlowCache logo" class="brand-logo" />
+				<div>
+					<h1 class="vault-logo">FlowCache</h1>
+					<p class="vault-sublogo">Private Tool Vault • Curated for modern work</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="menu-wrapper">
+			<button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+			<div class="menu-dropdown" id="menuDropdown">
+				<a href="index.html">Home</a>
+				<a href="#newThisWeek">New This Week</a>
+				<a href="#vaultTools">Vault Tools</a>
+				<a href="newsletter.html">Newsletter</a>
+				<a href="login.html">Login</a>
+			</div>
+		</div>
+	</header>
+
+	<!-- VAULT HERO -->
+	<section class="vault-command">
+	  <div class="vault-command-grid">
+	    <div class="vault-command-copy">
+	      <p class="vault-kicker">MEMBER CLEARANCE</p>
+	      <h2>The restricted stack for serious digital work.</h2>
+	      <p class="vault-description">
+	        FlowCache stores a curated library of systems, software, and hidden resources
+	        for research, operations, content, growth, and business infrastructure.
+	      </p>
+
+	      <div class="hero-cta-row vault-hero-actions">
+	        <a
+	          href="https://flowcache.lemonsqueezy.com/checkout/buy/da14bb04-717c-43fe-a4aa-21157b08c077"
+	          target="_blank"
+	          class="unlock-btn"
+	        >
+	          Access The Library
+	        </a>
+	        <a href="#newThisWeek" class="hero-btn secondary-btn">
+	          View Weekly Drop
+	        </a>
+	      </div>
+	    </div>
+
+	    <div class="vault-side-panel">
+	      <span class="vault-side-label">Inside Clearance</span>
+
+	      <div class="vault-side-item">
+	        <strong>Research Systems</strong>
+	        <p>Find, sort, and use better tools faster.</p>
+	      </div>
+
+	      <div class="vault-side-item">
+	        <strong>Business Infrastructure</strong>
+	        <p>Tools for client work, workflows, intake, and operations.</p>
+	      </div>
+
+	      <div class="vault-side-item">
+	        <strong>Weekly Vault Drops</strong>
+	        <p>Fresh additions without digging through random lists online.</p>
+	      </div>
+	    </div>
+	  </div>
+
+	  <div class="vault-proof-bar">
+	    <div class="vault-proof-item">
+	      <strong>100+</strong>
+	      <span>Curated tools</span>
+	    </div>
+	    <div class="vault-proof-item">
+	      <strong>Weekly</strong>
+	      <span>Fresh vault drops</span>
+	    </div>
+	    <div class="vault-proof-item">
+	      <strong>Restricted</strong>
+	      <span>Member-only library</span>
+	    </div>
+	    <div class="vault-proof-item">
+	      <strong>Built for use</strong>
+	      <span>Not random filler</span>
+	    </div>
+	  </div>
+	</section>
+
+	<!-- VAULT POSITIONING MODULES -->
+	<section class="vault-module-row">
+	  <div class="vault-module-card">
+	    <span class="vault-module-tag">01</span>
+	    <h3>Curated, not crowded</h3>
+	    <p>
+	      Every tool should feel worth entering the library for. Nothing is there
+	      just to make the count look bigger.
+	    </p>
+	  </div>
+
+	  <div class="vault-module-card">
+	    <span class="vault-module-tag">02</span>
+	    <h3>Updated weekly</h3>
+	    <p>
+	      New tools, systems, categories, and hidden finds are added regularly to
+	      keep the library sharp.
+	    </p>
+	  </div>
+
+	  <div class="vault-module-card">
+	    <span class="vault-module-tag">03</span>
+	    <h3>Built for modern work</h3>
+	    <p>
+	      Research, business, content, automation, operations, and digital
+	      infrastructure in one place.
+	    </p>
+	  </div>
+	</section>
+
+	<section class="vault-section" id="newThisWeek">
+		<div class="section-header">
+			<span class="section-label">Fresh Inside FlowCache</span>
+			<h2>New This Week</h2>
+		</div>
+
+		<div id="weeklyGrid" class="tool-grid"></div>
+	</section>
+
+	<section class="vault-section" id="vaultTools">
+		<div class="section-header">
+			<span class="section-label">Full Library</span>
+			<h2>Vault Tools</h2>
+		</div>
+
+		<div id="toolGrid" class="tool-grid"></div>
+	</section>
+
+	<script>
+		const menuToggle = document.getElementById("menuToggle");
+		const menuDropdown = document.getElementById("menuDropdown");
+
+		if (menuToggle && menuDropdown) {
+			menuToggle.addEventListener("click", () => {
+				menuDropdown.classList.toggle("show");
+			});
+
+			document.addEventListener("click", (e) => {
+				if (!e.target.closest(".menu-wrapper")) {
+					menuDropdown.classList.remove("show");
+				}
+			});
+		}
+	</script>
+
+</body>
+</html>
