@@ -1133,4 +1133,35 @@ section {
   .luxury-vault-shell {
     padding: 16px;
   }
+}.fc-hero-inner {
+  max-width: 1180px !important;
+  margin: 0 auto !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.05fr) minmax(350px, 0.95fr) !important;
+  gap: 52px !important;
+  align-items: center !important;
+}
+
+.fc-hero-left {
+  max-width: 680px !important;
+}
+
+.fc-hero-dashboard {
+  display: grid !important;
+  grid-template-columns: 48px 1fr !important;
+  gap: 18px !important;
+}
+
+@media (max-width: 960px) {
+  .fc-hero-inner {
+    grid-template-columns: 1fr !important;
+  }
+
+  .fc-hero-dashboard {
+    grid-template-columns: 1fr !important;
+  }
+
+  .dashboard-sidebar {
+    display: none !important;
+  }
 }
