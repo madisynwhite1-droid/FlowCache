@@ -201,9 +201,10 @@ function matchesSearch(tool, searchValue) {
 }
 
 function matchesCategory(tool) {
-  return currentCategory === "all" || tool.category === currentCategory;
+  +if (currentCategory === "all") return true;
+  +
+  + return normalizeValue(tool.category) === normalizeValue(currentCategory);
 }
-
 function getFreeTools() {
   const searchValue = normalizeValue(searchInput?.value);
 
