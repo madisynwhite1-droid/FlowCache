@@ -66,8 +66,8 @@ input {
   align-items: center;
   gap: 18px;
   padding: 16px 40px;
-  background: rgba(8, 3, 18, 0.72);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+   background:
+    linear-gradient(135deg, rgba(36, 16, 72, 0.78), rgba(14, 6, 30, 0.74));  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(18px);
 }
 
