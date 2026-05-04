@@ -16,7 +16,7 @@ function renderTools(){
   toolGrid.innerHTML = tools
     .filter(t => t.name.toLowerCase().includes(val))
     .map(t => `
-      <div class="card">
+      <div class="tool-card">
         <h3>${t.name}</h3>
         <a href="${t.link}" target="_blank">Visit</a>
       </div>
@@ -25,7 +25,7 @@ function renderTools(){
 
 function renderWeekly(){
   weeklyGrid.innerHTML = tools.slice(0,3).map(t=>`
-    <div class="card">
+    <div class="tool-card">
       <h3>${t.name}</h3>
     </div>
   `).join("");
