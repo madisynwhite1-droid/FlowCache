@@ -11,69 +11,72 @@
 
 <body>
 
-<header class="nav">
-  <div class="logo">FlowCache</div>
+<header class="vault-topbar">
+  <h1 class="vault-logo">FlowCache</h1>
 
-  <nav class="links">
+  <nav class="desktop-nav">
     <a href="#freePreview">Free Tools</a>
     <a href="#weeklyDrop">Weekly</a>
     <a href="#fullAccess">Vault</a>
   </nav>
-
-  <button id="menuBtn">☰</button>
 </header>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="hero-glow"></div>
+<section class="fc-hero">
+  <div class="fc-hero-glow glow-one"></div>
 
-  <div class="hero-content">
-    <h1>
-      Unlock tools<br>
-      <span>people don’t talk about.</span>
-    </h1>
+  <div class="fc-hero-inner">
 
-    <p>
-      A curated vault of AI, business, and hidden tools so you stop wasting time searching.
-    </p>
+    <div class="fc-hero-left">
+      <h2>
+        Unlock tools
+        <span>people don’t talk about.</span>
+      </h2>
 
-    <div class="hero-buttons">
-      <a href="#freePreview" class="btn primary">Explore Free</a>
-      <a href="#fullAccess" class="btn secondary">Preview Vault</a>
+      <p class="fc-hero-copy">
+        A curated vault of AI, business, and hidden tools so you stop wasting time searching.
+      </p>
+
+      <div class="hero-cta-row">
+        <a href="#freePreview" class="primary-btn">Explore Free</a>
+        <a href="#fullAccess" class="secondary-btn">Preview Vault</a>
+      </div>
     </div>
+
   </div>
 </section>
 
 <!-- PROOF -->
-<section class="proof">
-  <div>5 Free Tools</div>
-  <div>100+ Inside Vault</div>
-  <div>Weekly Drops</div>
+<section class="fc-proof-strip">
+  <div class="proof-item">5 Free Tools</div>
+  <div class="proof-item">100+ Inside Vault</div>
+  <div class="proof-item">Weekly Drops</div>
 </section>
 
-<!-- FREE -->
-<section id="freePreview" class="section">
+<!-- FREE TOOLS -->
+<section id="freePreview" class="free-preview-section">
   <h2>Free Tools</h2>
-  <input id="toolSearch" placeholder="Search tools...">
 
-  <div id="toolGrid" class="grid"></div>
+  <input id="toolSearch" placeholder="Search tools..." />
+
+  <div id="toolGrid" class="tool-grid"></div>
 </section>
 
 <!-- WEEKLY -->
-<section id="weeklyDrop" class="section">
+<section id="weeklyDrop" class="new-this-week">
   <h2>This Week</h2>
-  <div id="weeklyGrid" class="grid"></div>
+  <div id="weeklyGrid" class="weekly-grid"></div>
 </section>
 
 <!-- VAULT -->
-<section id="fullAccess" class="section">
+<section id="fullAccess" class="premium-preview-section">
   <h2>Vault Preview</h2>
 
-  <div class="grid">
-    <div class="card locked">AI Research Tools</div>
-    <div class="card locked">Automation Stack</div>
-    <div class="card locked">Creator Tools</div>
-    <div class="card locked">Hidden Resources</div>
+  <div class="premium-preview-grid">
+    <div class="tool-card premium-card">AI Research Tools</div>
+    <div class="tool-card premium-card">Automation Stack</div>
+    <div class="tool-card premium-card">Creator Tools</div>
+    <div class="tool-card premium-card">Hidden Resources</div>
   </div>
 </section>
 
