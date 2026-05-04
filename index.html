@@ -1,710 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>FlowCache</title>
-  <meta
-    name="description"
-    content="FlowCache is a curated tool vault for AI, business, automation, research, content, and modern digital work."
-  />
+<title>FlowCache</title>
+<meta name="description" content="FlowCache is a curated tool vault for AI, business, automation, research, content, and modern digital work." />
 
-  <link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-  <!-- TOP NAV -->
-  <header class="vault-topbar">
-    <a href="index.html" class="brand-inline" aria-label="FlowCache home">
-      <img src="logo.png" alt="FlowCache logo" class="brand-logo" />
 
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-inner">
+    <div class="logo">
+      <img src="logo.png" />
       <div>
-        <h1 class="vault-logo">FlowCache</h1>
-        <p class="vault-sublogo">Curated tools for modern work</p>
+        <h1>FlowCache</h1>
+        <span>Curated tools for modern work</span>
       </div>
-    </a>
+    </div>
 
-    <nav class="desktop-nav" aria-label="Main navigation">
-      <a href="index.html">Home</a>
-      <a href="#weeklyDrop">Weekly Drop</a>
-      <a href="#freePreview">Free Preview</a>
-      <a href="vault.html#vaultTools">Vault Tools</a>
-      <a href="vault.html#memberships">Memberships</a>
+    <nav class="links">
+      <a href="#freePreview">Free Tools</a>
+      <a href="#weeklyDrop">Weekly</a>
+      <a href="#fullAccess">Vault</a>
       <a href="newsletter.html">Newsletter</a>
-      <a href="#infoSection">Contact</a>
     </nav>
+  </div>
+</header>
 
-    <div class="menu-wrapper">
-      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" type="button">
-        ☰
-      </button>
+<!-- HERO -->
+<section class="hero">
 
-      <div class="menu-dropdown" id="menuDropdown">
-        <a href="index.html">Home</a>
-        <a href="#weeklyDrop">Weekly Drop</a>
-        <a href="#freePreview">Free Preview</a>
-        <a href="vault.html#vaultTools">Vault Tools</a>
-        <a href="vault.html#memberships">Memberships</a>
-        <a href="newsletter.html">Newsletter</a>
-        <a href="#pastDrops">Past Drops</a>
-        <a href="#infoSection">Contact</a>
-        <a href="login.html">Login</a>
-      </div>
-    </div>
-  </header>
+  <div class="hero-bg"></div>
 
-  <main>
-    <!-- HERO -->
-    <section class="fc-hero" id="home">
-      <div class="fc-hero-glow glow-one"></div>
-      <div class="fc-hero-glow glow-two"></div>
+  <div class="hero-inner">
 
-      <div class="fc-hero-inner">
-        <div class="fc-hero-left">
-          <p class="hero-pill">
-            <span class="hero-pill-dot"></span>
-            Private Tool Vault • Curated for modern work
-          </p>
+    <div class="hero-left">
 
-          <h2>
-            Unlock the tools
-            <span>most people never find.</span>
-          </h2>
+      <div class="pill">PRIVATE TOOL VAULT</div>
 
-          <p class="fc-hero-copy">
-            FlowCache is a curated library of useful tools for research, business,
-            creation, automation, and smarter online work — organized so you do not
-            have to dig through the internet for hours.
-          </p>
+      <h2>
+        Unlock tools
+        <span>most people never find</span>
+      </h2>
 
-          <div class="hero-cta-row">
-            <a href="#freePreview" class="hero-btn primary-btn">Explore Free Tools</a>
-            <a href="#fullAccess" class="hero-btn secondary-btn">Preview The Vault</a>
-          </div>
+      <p>
+        A curated library of powerful tools for research, business, content, and automation —
+        organized so you stop wasting time searching.
+      </p>
 
-          <div class="hero-signal-row" aria-label="FlowCache highlights">
-            <div class="hero-signal-pill">
-              <span class="signal-dot"></span>
-              <strong>100+</strong>
-              <span>curated tools</span>
-            </div>
-
-            <div class="hero-signal-pill">
-              <span class="signal-dot"></span>
-              <strong>Weekly</strong>
-              <span>fresh drops</span>
-            </div>
-
-            <div class="hero-signal-pill">
-              <span class="signal-dot"></span>
-              <strong>AI + Business</strong>
-              <span>modern work focus</span>
-            </div>
-          </div>
-        </div>
-
-        <aside class="fc-hero-dashboard" aria-label="FlowCache dashboard preview">
-          <div class="dashboard-orb"></div>
-
-          <div class="dashboard-sidebar">
-            <span class="dashboard-logo-dot"></span>
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-
-          <div class="dashboard-main">
-            <div class="dashboard-header">
-              <div>
-                <p class="mini-label">FlowCache Index</p>
-                <h3>Private library expanding weekly.</h3>
-              </div>
-
-              <span class="status-pill">
-                <span class="status-dot"></span>
-                Live Preview
-              </span>
-            </div>
-
-            <div class="dashboard-metrics">
-              <div>
-                <strong>100+</strong>
-                <span>Tools Inside</span>
-              </div>
-
-              <div>
-                <strong>5</strong>
-                <span>Free Tools</span>
-              </div>
-
-              <div>
-                <strong>Weekly</strong>
-                <span>Fresh Drops</span>
-              </div>
-            </div>
-
-            <div class="dashboard-focus-card">
-              <div>
-                <p>Vault Focus</p>
-                <h4>AI, research, automation, content, and business systems.</h4>
-              </div>
-
-              <span>Premium</span>
-            </div>
-
-            <div class="dashboard-bars">
-              <div class="dashboard-row">
-                <span>Research</span>
-                <div class="dashboard-bar"><i style="width: 82%"></i></div>
-              </div>
-
-              <div class="dashboard-row">
-                <span>Automation</span>
-                <div class="dashboard-bar"><i style="width: 68%"></i></div>
-              </div>
-
-              <div class="dashboard-row">
-                <span>Creator Tools</span>
-                <div class="dashboard-bar"><i style="width: 74%"></i></div>
-              </div>
-
-              <div class="dashboard-row">
-                <span>Business</span>
-                <div class="dashboard-bar"><i style="width: 79%"></i></div>
-              </div>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <!-- PROOF STRIP -->
-    <section class="fc-proof-strip" aria-label="FlowCache proof points">
-      <div class="proof-item">
-        <strong>5</strong>
-        <span>Free Tools Available</span>
+      <div class="cta">
+        <a href="#freePreview" class="btn primary">Explore Free Tools</a>
+        <a href="#fullAccess" class="btn secondary">Preview Vault</a>
       </div>
 
-      <div class="proof-item">
-        <strong>100+</strong>
-        <span>Tools Inside Vault</span>
+      <div class="stats">
+        <div><strong>100+</strong><span>Tools</span></div>
+        <div><strong>Weekly</strong><span>Drops</span></div>
+        <div><strong>Private</strong><span>Access</span></div>
       </div>
 
-      <div class="proof-item">
-        <strong>Weekly</strong>
-        <span>Curated Drops</span>
-      </div>
-
-      <div class="proof-item">
-        <strong>Private</strong>
-        <span>Tool Discovery</span>
-      </div>
-    </section>
-
-    <!-- TICKER -->
-    <section class="tool-ticker" aria-label="Tool categories ticker">
-      <div class="ticker-track">
-        <span>AI Research</span>
-        <span>Workflow Systems</span>
-        <span>Hidden Tools</span>
-        <span>Creator Growth</span>
-        <span>Business Automation</span>
-        <span>Weekly Drops</span>
-        <span>AI Research</span>
-        <span>Workflow Systems</span>
-        <span>Hidden Tools</span>
-        <span>Creator Growth</span>
-        <span>Business Automation</span>
-        <span>Weekly Drops</span>
-      </div>
-    </section>
-
-    <!-- WHY FLOWCACHE -->
-    <section class="comparison-section">
-      <div class="section-heading">
-        <p class="section-label">Why FlowCache</p>
-        <h2>Less digging. Better finds.</h2>
-        <p class="section-copy">
-          The internet has too many scattered lists. FlowCache makes discovery feel cleaner,
-          faster, and more intentional.
-        </p>
-      </div>
-
-      <div class="comparison-grid">
-        <article class="comparison-card muted">
-          <span class="card-number">01</span>
-          <h3>Random Searching</h3>
-          <p>
-            Endless tabs, outdated lists, sponsored results, and tools you forget five minutes later.
-          </p>
-        </article>
-
-        <article class="comparison-card highlight">
-          <span class="card-number">02</span>
-          <h3>FlowCache</h3>
-          <p>
-            A cleaner library of useful tools, organized by purpose and updated with fresh finds.
-          </p>
-        </article>
-      </div>
-    </section>
-
-    <!-- BUILT FOR -->
-    <section class="audience-section">
-      <div class="section-heading">
-        <p class="section-label">Built For</p>
-        <h2>Use FlowCache if you’re building, creating, researching, or organizing online.</h2>
-      </div>
-
-      <div class="audience-grid">
-        <article class="audience-card">
-          <span>01</span>
-          <h3>Creators</h3>
-          <p>Find tools for visuals, content, editing, and growth.</p>
-        </article>
-
-        <article class="audience-card">
-          <span>02</span>
-          <h3>Founders</h3>
-          <p>Discover systems for websites, automations, forms, and operations.</p>
-        </article>
-
-        <article class="audience-card">
-          <span>03</span>
-          <h3>Researchers</h3>
-          <p>Use better tools for search, summaries, sources, and learning.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- BRAND POSITIONING -->
-    <section class="brand-overview-section" id="whatIsFlowCache">
-      <div class="section-heading">
-        <p class="section-label">What FlowCache Is</p>
-        <h2>A premium discovery vault for people who are tired of wasting time searching.</h2>
-        <p class="section-copy">
-          FlowCache helps creators, founders, freelancers, students, researchers, and modern
-          internet users discover better tools faster.
-        </p>
-      </div>
-
-      <div class="brand-overview-grid">
-        <article class="brand-overview-card">
-          <p class="mini-label">For creators</p>
-          <h3>Find design, content, and workflow tools that actually help you produce.</h3>
-        </article>
-
-        <article class="brand-overview-card">
-          <p class="mini-label">For business</p>
-          <h3>Access tools for systems, automation, operations, and smarter online work.</h3>
-        </article>
-
-        <article class="brand-overview-card">
-          <p class="mini-label">For discovery</p>
-          <h3>Explore hidden gems, premium resources, and curated weekly drops.</h3>
-        </article>
-      </div>
-    </section>
-
-    <!-- AI DATA -->
-    <section class="ai-data-section" id="aiData">
-      <div class="ai-data-glow"></div>
-
-      <div class="ai-data-wrap">
-        <div class="ai-data-copy">
-          <p class="section-label">AI Usage Snapshot</p>
-
-          <h2>AI is already shaping how people work, search, create, and make decisions.</h2>
-
-          <p>
-            FlowCache exists because the internet is moving fast. AI tools are no longer just
-            for tech people — they are becoming part of everyday work, business, research,
-            content, school, and productivity.
-          </p>
-
-          <div class="ai-source-note">
-            Sources referenced: Stanford AI Index, McKinsey Global Survey, Pew Research Center.
-          </div>
-        </div>
-
-        <div class="ai-stat-grid">
-          <article class="ai-stat-card featured">
-            <span class="stat-label">Organizations</span>
-            <strong>88%</strong>
-            <p>regularly use AI in at least one business function, according to McKinsey’s 2025 global survey.</p>
-          </article>
-
-          <article class="ai-stat-card">
-            <span class="stat-label">Business adoption</span>
-            <strong>78%</strong>
-            <p>of organizations reported using AI in 2024, up from 55% the year before, according to Stanford AI Index.</p>
-          </article>
-
-          <article class="ai-stat-card">
-            <span class="stat-label">Workplace shift</span>
-            <strong>21%</strong>
-            <p>of U.S. workers said at least some of their work is done with AI, according to Pew Research Center.</p>
-          </article>
-
-          <article class="ai-stat-card">
-            <span class="stat-label">Global momentum</span>
-            <strong>53%</strong>
-            <p>generative AI population adoption within three years, reported by Stanford’s 2026 AI Index.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- WEEKLY DROP -->
-    <section class="new-this-week" id="weeklyDrop">
-      <div class="section-heading">
-        <p class="section-label">Weekly Drop</p>
-        <h2>This Week's Best Finds</h2>
-        <p class="section-copy">
-          A weekly edit of standout tools, smarter systems, and useful digital finds worth knowing now.
-        </p>
-      </div>
-
-      <div class="weekly-grid" id="weeklyGrid"></div>
-    </section>
-
-    <!-- FREE PREVIEW -->
-    <section class="free-preview-section" id="freePreview">
-      <div class="section-heading">
-        <p class="section-label">Free Preview</p>
-        <h2>Start with a public selection.</h2>
-        <p class="section-copy">
-          Five useful tools are open to browse. The deeper library lives inside the vault.
-        </p>
-      </div>
-
-      <div class="preview-layout">
-        <div class="preview-toolbar">
-          <input type="text" id="toolSearch" placeholder="Search free tools..." />
-
-          <div class="filter-row">
-            <button class="filter-btn active" data-filter="all" type="button">All</button>
-            <button class="filter-btn" data-filter="Writing" type="button">Writing</button>
-            <button class="filter-btn" data-filter="Productivity" type="button">Productivity</button>
-            <button class="filter-btn" data-filter="Research" type="button">Research</button>
-            <button class="filter-btn" data-filter="Design" type="button">Design</button>
-            <button class="filter-btn" data-filter="Marketing" type="button">Marketing</button>
-            <button class="filter-btn" data-filter="Business" type="button">Business</button>
-          </div>
-        </div>
-
-        <aside class="homepage-unlock-banner">
-          <p class="mini-label">Full Access</p>
-          <h3>Unlock the deeper library.</h3>
-          <p>Browse the public preview now, then unlock the full vault for deeper categories.</p>
-
-          <a
-            href="https://flowcache.lemonsqueezy.com/checkout/buy/da14bb04-717c-43fe-a4aa-21157b08c077"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="unlock-banner-btn"
-          >
-            Unlock Full Access
-          </a>
-        </aside>
-      </div>
-
-      <div class="luxury-vault-shell">
-        <div class="tool-grid" id="toolGrid"></div>
-      </div>
-    </section>
-
-    <!-- FULL ACCESS -->
-    <section class="premium-preview-section" id="fullAccess">
-      <div class="section-heading">
-        <p class="section-label">Full Access</p>
-        <h2>Inside the library.</h2>
-        <p class="section-copy">
-          Deeper categories for research, systems, content, design, automation, and modern work.
-        </p>
-      </div>
-
-      <div class="premium-preview-grid">
-        <article class="tool-card premium-card">
-          <span class="tool-badge">Premium</span>
-          <h3>AI Research Tools</h3>
-          <p>Deeper discovery tools for learning, source gathering, and smarter workflows.</p>
-
-          <div class="tool-meta">
-            <span class="tool-chip">Research</span>
-            <span class="tool-chip">AI</span>
-          </div>
-
-          <span class="locked-pill">Paid Access</span>
-        </article>
-
-        <article class="tool-card premium-card">
-          <span class="tool-badge">Premium</span>
-          <h3>Business Automation Stack</h3>
-          <p>Apps and systems for streamlining admin, operations, and repetitive work.</p>
-
-          <div class="tool-meta">
-            <span class="tool-chip">Business</span>
-            <span class="tool-chip">Automation</span>
-          </div>
-
-          <span class="locked-pill">Paid Access</span>
-        </article>
-
-        <article class="tool-card premium-card">
-          <span class="tool-badge">Premium</span>
-          <h3>Creator Growth Tools</h3>
-          <p>Useful tools for content planning, editing, publishing, and brand growth.</p>
-
-          <div class="tool-meta">
-            <span class="tool-chip">Creator</span>
-            <span class="tool-chip">Content</span>
-          </div>
-
-          <span class="locked-pill">Paid Access</span>
-        </article>
-
-        <article class="tool-card premium-card">
-          <span class="tool-badge">Premium</span>
-          <h3>Hidden Internet Resources</h3>
-          <p>Useful platforms and overlooked tools most people never hear about in time.</p>
-
-          <div class="tool-meta">
-            <span class="tool-chip">Discovery</span>
-            <span class="tool-chip">Premium</span>
-          </div>
-
-          <span class="locked-pill">Paid Access</span>
-        </article>
-      </div>
-    </section>
-
-    <!-- TRUST STRIP -->
-    <section class="trust-strip signature-strip">
-      <article class="trust-card signature-card">
-        <p class="mini-label">Curated</p>
-        <h3>Useful tools, selected with intention.</h3>
-      </article>
-
-      <article class="trust-card signature-card">
-        <p class="mini-label">Organized</p>
-        <h3>A cleaner way to discover what is worth using.</h3>
-      </article>
-
-      <article class="trust-card signature-card">
-        <p class="mini-label">Private Access</p>
-        <h3>Free preview outside. Full Access inside.</h3>
-      </article>
-    </section>
-
-    <!-- PAST DROPS -->
-    <section class="past-drops-section" id="pastDrops">
-      <div class="section-heading">
-        <p class="section-label">Past Drops</p>
-        <h2>Previous selections.</h2>
-        <p class="section-copy">
-          Archived drops, past issues, and earlier curation from FlowCache.
-        </p>
-      </div>
-
-      <div class="past-drops-grid">
-        <article class="drop-card">
-          <p class="drop-meta">Issue 001</p>
-          <h3>AI Writing & Research Picks</h3>
-          <p>A starter curation of useful writing tools, research helpers, and workflow upgrades.</p>
-          <a href="newsletter.html" class="tool-link">View Drop</a>
-        </article>
-
-        <article class="drop-card">
-          <p class="drop-meta">Issue 002</p>
-          <h3>Creator Workflow Stack</h3>
-          <p>Tools for content planning, clips, visuals, and faster brand execution.</p>
-          <a href="newsletter.html" class="tool-link">View Drop</a>
-        </article>
-
-        <article class="drop-card">
-          <p class="drop-meta">Issue 003</p>
-          <h3>Business Systems Drop</h3>
-          <p>Better tools for operations, automation, lead capture, and organized work.</p>
-          <a href="newsletter.html" class="tool-link">View Drop</a>
-        </article>
-      </div>
-    </section>
-
-    <!-- NEWSLETTER -->
-    <section class="private-access-section" id="newsletterSection">
-      <div class="private-access-card">
-        <p class="section-label">Newsletter</p>
-        <h2>FlowCache Weekly</h2>
-
-        <div class="newsletter-preview-list">
-          <div>
-            <span>01</span>
-            <p>3 useful tools worth knowing</p>
-          </div>
-
-          <div>
-            <span>02</span>
-            <p>1 hidden internet resource</p>
-          </div>
-
-          <div>
-            <span>03</span>
-            <p>1 workflow idea you can actually use</p>
-          </div>
-        </div>
-
-        <form
-          class="newsletter-form private-form"
-          action="https://formspree.io/f/mpqyyzdg"
-          method="POST"
-        >
-          <input type="email" name="email" placeholder="Enter your email address" required />
-          <button type="submit">Join Newsletter</button>
-        </form>
-
-        <p class="private-note">One thoughtful update each week.</p>
-      </div>
-    </section>
-
-    <!-- FAQ + CONTACT -->
-    <section class="info-section" id="infoSection">
-      <div class="section-heading-wrap">
-        <span class="section-kicker">Support</span>
-        <h2 class="section-title">Questions, contact, and quick help</h2>
-        <p class="section-subtext">
-          Everything you need to know before exploring more inside FlowCache.
-        </p>
-      </div>
-
-      <div class="info-grid">
-        <article class="info-panel faq-panel">
-          <div class="panel-top">
-            <span class="panel-label">FAQ</span>
-            <h3>Frequently asked questions</h3>
-          </div>
-
-          <div class="faq-list">
-            <details class="faq-item">
-              <summary>What is FlowCache?</summary>
-              <p>
-                FlowCache is a curated discovery vault for useful digital tools, AI platforms,
-                business resources, creator systems, and hidden internet finds.
-              </p>
-            </details>
-
-            <details class="faq-item">
-              <summary>Why does AI usage matter right now?</summary>
-              <p>
-                AI is becoming part of everyday work, research, content creation, marketing,
-                business operations, and school. FlowCache helps people find better tools faster
-                instead of digging through random lists and outdated recommendations.
-              </p>
-            </details>
-
-            <details class="faq-item">
-              <summary>Is FlowCache only for people who already understand AI?</summary>
-              <p>
-                No. FlowCache is built to make tool discovery easier for beginners, creators,
-                small business owners, students, researchers, and people who want useful resources
-                without needing to be super technical.
-              </p>
-            </details>
-
-            <details class="faq-item">
-              <summary>Where do the AI statistics come from?</summary>
-              <p>
-                The homepage references public research from sources like Stanford AI Index,
-                McKinsey, and Pew Research Center to show how quickly AI tools are becoming part
-                of work and daily life.
-              </p>
-            </details>
-
-            <details class="faq-item">
-              <summary>What comes with full access?</summary>
-              <p>
-                Full access opens the deeper FlowCache library, including premium tools,
-                expanded categories, hidden resources, and more curated recommendations beyond
-                the public preview.
-              </p>
-            </details>
-
-            <details class="faq-item">
-              <summary>How often is FlowCache updated?</summary>
-              <p>
-                FlowCache is designed around fresh drops and ongoing curation, so the library can
-                keep growing as better tools and resources are discovered.
-              </p>
-            </details>
-          </div>
-        </article>
-
-        <article class="info-panel contact-panel">
-          <div class="panel-top">
-            <span class="panel-label">Contact</span>
-            <h3>Stay connected</h3>
-          </div>
-
-          <p class="contact-copy">
-            For questions, partnerships, or support, reach out below.
-          </p>
-
-          <div class="contact-stack">
-            <a href="mailto:flowcacheco@gmail.com" class="contact-card">
-              <span class="contact-title">Email</span>
-              <span class="contact-value">flowcacheco@gmail.com</span>
-            </a>
-
-            <a href="https://instagram.com/flowcache.ai" target="_blank" rel="noopener noreferrer" class="contact-card">
-              <span class="contact-title">Instagram</span>
-              <span class="contact-value">@flowcache.ai</span>
-            </a>
-          </div>
-        </article>
-      </div>
-    </section>
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="vault-footer home-footer">
-    <div class="footer-grid">
-      <div class="footer-brand-block">
-        <h4>FlowCache</h4>
-        <p>Curated tools for modern work</p>
-      </div>
-
-      <div>
-        <h4>Explore</h4>
-        <a href="vault.html">Vault</a>
-        <a href="#freePreview">Free Preview</a>
-        <a href="#weeklyDrop">Weekly Drop</a>
-      </div>
-
-      <div>
-        <h4>Resources</h4>
-        <a href="newsletter.html">Newsletter</a>
-        <a href="#pastDrops">Past Drops</a>
-        <a href="#infoSection">Contact</a>
-      </div>
-
-      <div>
-        <h4>Social</h4>
-        <a href="https://instagram.com/flowcache.ai" target="_blank" rel="noopener noreferrer">Instagram</a>
-        <a href="login.html">Login</a>
-        <a href="vault.html#memberships">Memberships</a>
-      </div>
     </div>
 
-    <p class="vault-count">Private library access available now.</p>
-    <p class="copyright">© 2026 FlowCache. Curated tools for modern work.</p>
-  </footer>
+    <!-- RIGHT PANEL -->
+    <div class="hero-card">
 
-  <div class="mobile-sticky-cta">
-    <span>Unlock 100+ tools</span>
-    <a href="#fullAccess">View Access</a>
+      <div class="card-top">
+        <span>FlowCache Index</span>
+        <div class="live-dot"></div>
+      </div>
+
+      <div class="card-body">
+        <h3>Live system overview</h3>
+
+        <div class="bars">
+          <div><span>Research</span><i style="width:80%"></i></div>
+          <div><span>Automation</span><i style="width:70%"></i></div>
+          <div><span>Creator</span><i style="width:75%"></i></div>
+          <div><span>Business</span><i style="width:78%"></i></div>
+        </div>
+
+      </div>
+
+    </div>
+
   </div>
 
-  <script src="script.js"></script>
+</section>
+
+<!-- PROOF -->
+<section class="proof">
+  <div><strong>5</strong><span>Free Tools</span></div>
+  <div><strong>100+</strong><span>Vault Tools</span></div>
+  <div><strong>Weekly</strong><span>Drops</span></div>
+  <div><strong id="liveUsers">128</strong><span>Active Users</span></div>
+</section>
+
+<!-- WEEKLY -->
+<section id="weeklyDrop" class="section">
+  <h2>This Week</h2>
+  <div id="weeklyGrid"></div>
+</section>
+
+<!-- FREE -->
+<section id="freePreview" class="section">
+  <h2>Free Preview</h2>
+
+  <input id="toolSearch" placeholder="Search tools..." />
+
+  <div id="toolGrid"></div>
+</section>
+
+<!-- VAULT -->
+<section id="fullAccess" class="section">
+  <h2>Inside the Vault</h2>
+
+  <div class="vault-grid">
+    <div class="vault-card">AI Research Tools</div>
+    <div class="vault-card">Automation Systems</div>
+    <div class="vault-card">Creator Growth</div>
+    <div class="vault-card">Hidden Internet Tools</div>
+  </div>
+
+  <a class="unlock" href="https://flowcache.lemonsqueezy.com/checkout/buy/da14bb04-717c-43fe-a4aa-21157b08c077">
+    Unlock Full Access
+  </a>
+</section>
+
+<script src="script.js"></script>
+
 </body>
 </html>
