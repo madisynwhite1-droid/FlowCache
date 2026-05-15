@@ -1819,11 +1819,33 @@ section {
     grid-template-columns: 1fr;
   }
 }
-/* Fix: keep hero overlay behind the header */
+/* Header + hero stacking fix */
+.vault-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+}
+
 .fc-hero {
-  z-index: 0; /* create stacking context under the header */
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  isolation: isolate;
 }
 
 .fc-hero::before {
-  z-index: -1; /* move the grid/overlay behind the hero so header isn't covered */
+  z-index: 0;
+}
+
+.fc-hero::after {
+  z-index: 0;
+}
+
+.fc-hero-glow {
+  z-index: 0;
+}
+
+.fc-hero-inner {
+  position: relative;
+  z-index: 2;
 }
