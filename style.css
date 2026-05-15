@@ -1819,3 +1819,11 @@ section {
     grid-template-columns: 1fr;
   }
 }
+/* Fix: keep hero overlay behind the header */
+.fc-hero {
+  z-index: 0; /* create stacking context under the header */
+}
+
+.fc-hero::before {
+  z-index: -1; /* move the grid/overlay behind the hero so header isn't covered */
+}
