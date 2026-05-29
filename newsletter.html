@@ -8,50 +8,45 @@
 </head>
 
 <body>
-  <header class="vault-topbar">
-    <a href="index.html" class="brand-inline">
+  <header class="topbar">
+    <a href="index.html" class="brand">
       <img src="logo.png" alt="FlowCache logo" class="brand-logo" />
       <div>
-        <h1 class="vault-logo">FlowCache</h1>
-        <p class="vault-sublogo">Weekly Newsletter</p>
+        <h1>FlowCache</h1>
+        <p>Weekly Newsletter</p>
       </div>
     </a>
 
-    <div class="menu-wrapper">
-      <button class="menu-toggle" id="menuToggle">☰</button>
-      <nav class="menu-dropdown" id="menuDropdown">
-        <a href="index.html">Home</a>
-        <a href="#weekly-tools">This Week</a>
-        <a href="#signup">Notify Me</a>
-      </nav>
-    </div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="#weekly-tools">This Week</a>
+      <a href="#signup">Notify Me</a>
+    </nav>
   </header>
 
   <main>
-    <section class="newsletter-section">
-      <div class="newsletter-hero">
-        <p class="mini-label">FlowCache Weekly</p>
-        <h1>This Week's Newsletter</h1>
-        <p class="hero-text">
-          A clean weekly drop featuring useful tools, smart resources, and digital finds worth using right now.
-        </p>
+    <section class="hero">
+      <p class="eyebrow">FlowCache Weekly</p>
+      <h2>This Week’s Newsletter</h2>
+      <p class="hero-text">
+        A clean weekly drop featuring useful tools, smart resources, and digital finds worth using right now.
+      </p>
 
-        <div class="hero-actions">
-          <a href="#weekly-tools" class="hero-btn primary">View This Week</a>
-          <a href="#signup" class="hero-btn secondary">Newsletter Notifs</a>
-        </div>
+      <div class="hero-buttons">
+        <a href="#weekly-tools" class="btn primary">View This Week</a>
+        <a href="#signup" class="btn secondary">Newsletter Notifs</a>
       </div>
     </section>
 
-    <section class="newsletter-section" id="weekly-tools">
-      <div class="section-head center">
-        <p class="mini-label">Available This Week</p>
+    <section class="weekly-card" id="weekly-tools">
+      <div class="section-heading">
+        <p class="eyebrow">Available This Week</p>
         <h2>Featured Tools</h2>
       </div>
 
-      <div class="tool-grid">
+      <div class="tools-grid">
         <article class="tool-card">
-          <span class="tool-tag">AI Productivity</span>
+          <span>AI Productivity</span>
           <h3>Gamma</h3>
           <p>
             Create clean presentations, documents, and polished visual outlines faster.
@@ -59,7 +54,7 @@
         </article>
 
         <article class="tool-card">
-          <span class="tool-tag">Creative Assets</span>
+          <span>Creative Assets</span>
           <h3>Leonardo AI</h3>
           <p>
             Generate branded visuals, thumbnails, concepts, and design direction for digital projects.
@@ -67,7 +62,7 @@
         </article>
 
         <article class="tool-card">
-          <span class="tool-tag">Automation</span>
+          <span>Automation</span>
           <h3>Make</h3>
           <p>
             Connect apps, automate repeat tasks, and create smoother online workflows.
@@ -76,10 +71,10 @@
       </div>
     </section>
 
-    <section class="newsletter-section" id="signup">
-      <div class="newsletter-card signup-card">
-        <p class="mini-label">Newsletter Notifications</p>
-        <h2>Get next week's drop.</h2>
+    <section class="signup-section" id="signup">
+      <div class="signup-card">
+        <p class="eyebrow">Newsletter Notifications</p>
+        <h2>Get next week’s drop.</h2>
         <p>
           Join for weekly FlowCache updates when the newest newsletter and tools are available.
         </p>
@@ -91,21 +86,5 @@
       </div>
     </section>
   </main>
-
-  <script>
-    const menuToggle = document.getElementById('menuToggle');
-    const menuDropdown = document.getElementById('menuDropdown');
-
-    menuToggle.addEventListener('click', () => {
-      menuDropdown.classList.toggle('show');
-    });
-
-    // Close menu when a link is clicked
-    menuDropdown.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        menuDropdown.classList.remove('show');
-      });
-    });
-  </script>
 </body>
 </html>
