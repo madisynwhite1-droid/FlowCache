@@ -1,3 +1,4 @@
+```javascript
 const tools = [
   {
     name: "Perplexity",
@@ -157,17 +158,9 @@ const tools = [
   }
 ];
 
-const FULL_VAULT_CHECKOUT_URL =
-  "https://flowcache.lemonsqueezy.com/checkout/buy/da14bb04-717c-43fe-a4aa-21157b08c077";
-
-const toolGrid = document.getElementById("toolGrid");
 const weeklyGrid = document.getElementById("weeklyGrid");
-const searchInput = document.getElementById("toolSearch");
-const filterButtons = document.querySelectorAll(".filter-btn");
 const menuToggle = document.getElementById("menuToggle");
 const menuDropdown = document.getElementById("menuDropdown");
-
-let currentCategory = "all";
 
 function escapeHtml(value = "") {
   return String(value)
@@ -178,165 +171,56 @@ function escapeHtml(value = "") {
     .replace(/'/g, "&#39;");
 }
 
-function normalizeValue(value) {
-  return String(value || "").trim().toLowerCase();
-}
-
-function matchesSearch(tool, searchValue) {
-  if (!searchValue) return true;
-
-  const haystack = [
-    tool.name,
-    tool.category,
-    tool.bestFor,
-    tool.helpsWith,
-    tool.badge,
-    tool.pricing,
-    tool.editorNote
-  ]
-    .join(" ")
-    .toLowerCase();
-
-  return haystack.includes(searchValue);
-}
-
-function matchesCategory(tool) {
-  if (currentCategory === "all") return true;
-  return normalizeValue(tool.category) === normalizeValue(currentCategory);
-}
-
-function getFreeTools() {
-  const searchValue = normalizeValue(searchInput?.value);
-
+function getWeeklyTools() {
   return tools
-    .filter((tool) => tool.type === "free")
-    .filter((tool) => matchesCategory(tool) && matchesSearch(tool, searchValue))
-    .slice(0, 5);
+    .filter((tool) => tool.isNew)
+    .slice(0, 4);
 }
 
-function createToolCard(tool) {
-  const isPremium = tool.type === "premium";
-  const actionHref = isPremium ? FULL_VAULT_CHECKOUT_URL : tool.link;
-  const actionLabel = isPremium ? "Unlock Access" : "Visit Tool";
-  const actionClass = isPremium ? "locked-btn" : "visit-btn";
+function createWeeklyCard(tool) {
+  const toolUrl = tool.link || "vault.html";
+  const actionLabel = tool.type === "premium" ? "Explore pick" : "View tool";
 
   return `
-    <article class="tool-card ${isPremium ? "premium-card" : "free-card"}">
-      <div class="tool-card-glow"></div>
+    <article class="weekly-card">
+      <span class="weekly-badge">${escapeHtml(tool.badge || "Fresh Find")}</span>
+      <p class="mini-label">${escapeHtml(tool.category || "Tool")}</p>
+      <h3>${escapeHtml(tool.name || "Curated Tool")}</h3>
+      <p class="weekly-summary">${escapeHtml(tool.bestFor || "")}</p>
+      <p class="weekly-support">${escapeHtml(tool.editorNote || tool.helpsWith || "")}</p>
 
-      <div class="tool-card-status">
-        <div class="tool-status-copy">
-          <span class="tool-status-kicker">${isPremium ? "Paid Access" : "Free Preview"}</span>
-          <span class="tool-status-note">
-            ${isPremium ? "Preview the vault category" : "Open to explore now"}
-          </span>
-        </div>
-
-        <div class="tool-status-right">
-          <span class="tool-access ${isPremium ? "premium" : "free"}">
-            ${isPremium ? "Paid" : "Free"}
-          </span>
-          <span class="tool-fresh-pill">
-            ${tool.isNew ? "Fresh Find" : "Curated"}
-          </span>
-        </div>
-      </div>
-
-      <div class="tool-card-content">
-        <div class="tool-card-top">
-          <span class="tool-category">${escapeHtml(tool.category)}</span>
-          <span class="luxury-badge">${escapeHtml(tool.badge || "Curated")}</span>
-        </div>
-
-        <div class="tool-card-middle">
-          <h3>${escapeHtml(tool.name)}</h3>
-          <p class="tool-summary">${escapeHtml(tool.bestFor || "")}</p>
-        </div>
-
-        <div class="tool-card-divider"></div>
-
-        <div class="tool-card-bottom">
-          <p class="tool-support">${escapeHtml(tool.helpsWith || "")}</p>
-          <p class="editor-note">${escapeHtml(tool.editorNote || "")}</p>
-        </div>
-      </div>
-
-      <div class="tool-card-action">
-        <a
-          href="${escapeHtml(actionHref)}"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="${actionClass}"
-        >
-          ${escapeHtml(actionLabel)}
-        </a>
+      <div class="weekly-footer">
+        <span>${escapeHtml(tool.beginner ? "Beginner friendly" : "Power pick")}</span>
+        <a href="${escapeHtml(toolUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(actionLabel)}</a>
       </div>
     </article>
   `;
 }
 
-function renderTools() {
-  if (!toolGrid) return;
+function renderWeeklyTools() {
+  if (!weeklyGrid) return;
 
-  const toolsToRender = getFreeTools();
+  const weeklyTools = getWeeklyTools();
 
-  if (!toolsToRender.length) {
-    toolGrid.innerHTML = `
-      <div class="tool-card">
-        <h3>No tools found</h3>
-        <p>Try a different search or category.</p>
-      </div>
+  if (!weeklyTools.length) {
+    weeklyGrid.innerHTML = `
+      <article class="weekly-card">
+        <span class="weekly-badge">Coming Soon</span>
+        <p class="mini-label">Weekly Drop</p>
+        <h3>Fresh finds are being curated.</h3>
+        <p class="weekly-summary">Check back soon for the next FlowCache edit.</p>
+      </article>
     `;
     return;
   }
 
-  toolGrid.innerHTML = toolsToRender.map(createToolCard).join("");
+  weeklyGrid.innerHTML = weeklyTools.map(createWeeklyCard).join("");
 }
 
-function renderWeeklyTools() {
-  if (!weeklyGrid) return;
-
-  const weeklyTools = tools.filter((tool) => tool.isNew).slice(0, 4);
-
-  weeklyGrid.innerHTML = weeklyTools
-    .map(
-      (tool) => `
-        <article class="tool-card weekly-card">
-          <span class="weekly-badge">${escapeHtml(tool.badge || "Fresh Find")}</span>
-          <p class="mini-label">${escapeHtml(tool.category)}</p>
-          <h3>${escapeHtml(tool.name)}</h3>
-          <p class="weekly-summary">${escapeHtml(tool.bestFor || "")}</p>
-          <p class="weekly-support">${escapeHtml(tool.helpsWith || "")}</p>
-
-          <div class="weekly-footer">
-            <span>${tool.type === "free" ? "Free Preview" : "Paid Access"}</span>
-            <span>${tool.beginner ? "Beginner Friendly" : "Power Pick"}</span>
-          </div>
-        </article>
-      `
-    )
-    .join("");
-}
-
-function initFilters() {
-  filterButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      filterButtons.forEach((btn) => btn.classList.remove("active"));
-      button.classList.add("active");
-      currentCategory = button.dataset.filter || "all";
-      renderTools();
-    });
-  });
-
-  if (searchInput) {
-    searchInput.addEventListener("input", renderTools);
-
-    searchInput.addEventListener("keydown", (event) => {
-      if (event.key === "Enter") {
-        event.preventDefault();
-      }
-    });
-  }
+function closeMenu() {
+  if (!menuDropdown || !menuToggle) return;
+  menuDropdown.classList.remove("show");
+  menuToggle.setAttribute("aria-expanded", "false");
 }
 
 function initMenu() {
@@ -344,7 +228,9 @@ function initMenu() {
 
   menuToggle.addEventListener("click", (event) => {
     event.stopPropagation();
-    menuDropdown.classList.toggle("show");
+
+    const isOpen = menuDropdown.classList.toggle("show");
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
   });
 
   document.addEventListener("click", (event) => {
@@ -352,22 +238,26 @@ function initMenu() {
     const clickedButton = menuToggle.contains(event.target);
 
     if (!clickedInsideMenu && !clickedButton) {
-      menuDropdown.classList.remove("show");
+      closeMenu();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeMenu();
     }
   });
 
   menuDropdown.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      menuDropdown.classList.remove("show");
-    });
+    link.addEventListener("click", closeMenu);
   });
 }
 
 function init() {
   initMenu();
-  initFilters();
-  renderTools();
   renderWeeklyTools();
 }
 
 document.addEventListener("DOMContentLoaded", init);
+
+```
